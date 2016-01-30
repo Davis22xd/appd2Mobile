@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <group android:checkableBehavior="single">
+        <item android:id="@+id/nav_plan" android:icon="@android:drawable/ic_menu_agenda"
+            android:title="Plan del día solo para ti" />
+        <item android:id="@+id/nav_discover" android:icon="@android:drawable/ic_menu_search"
+            android:title="Descubrir" />
+        <item android:id="@+id/nav_activity" android:icon="@android:drawable/ic_popup_sync"
+            android:title="Actividad" />
+    </group>
+
+    <item android:title="" >
+        <menu>
+            <item android:id="@+id/nav_tickets" android:icon="@android:drawable/ic_popup_reminder"
+                android:title="Tickets" />
+            <item android:id="@+id/nav_invite" android:icon="@android:drawable/ic_menu_share"
+                android:title="Invitar Gente" />
+            <item android:id="@+id/nav_notifications" android:icon="@android:drawable/ic_popup_reminder"
+                android:title="Notificaciones" />
+            <item android:id="@+id/nav_favorites" android:icon="@android:drawable/ic_media_ff"
+            android:title="Favoritos" />
+        </menu>
+    </item>
+    <item android:title="">
+        <menu>
+            <item android:id="@+id/nav_settings" android:icon="@android:drawable/ic_menu_edit"
+                android:title="Ajustes" />
+            <item android:id="@+id/nav_logout" android:icon="@android:drawable/ic_lock_power_off"
+                android:title="Cerrar Sesión" >
+                <com.facebook.login.widget.LoginButton
+                    xmlns:fb="http://schemas.android.com/apk/res-auto"
+                    android:id="@+id/login_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_centerInParent="true"
+                    android:maxHeight="80dp"
+                    android:maxWidth="80dp"
+                    fb:login_text=""
+                    fb:logout_text=""
+                    android:scaleType="centerInside"
+                    />
+            </item>
+        </menu>
+    </item>
+
+</menu>

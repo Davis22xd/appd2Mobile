@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent"
+    android:padding="16dp"
+    android:background="@drawable/fondos"
+    android:orientation="horizontal"
+    >
+    <RelativeLayout android:id="@+id/RelativeLayout01"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginTop="100dp"
+        android:layout_gravity="bottom|center_horizontal"
+        xmlns:android="http://schemas.android.com/apk/res/android">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/info"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentTop="true"
+            android:textSize="18sp"
+            android:layout_margin="6dp"
+            android:layout_centerHorizontal="true"
+            android:textAlignment="center"
+            />
+
+        <ImageView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:adjustViewBounds="true"
+            android:contentDescription="@string/logo_alt"
+            android:src="@drawable/appd2"
+            android:maxHeight="160dp"
+            android:maxWidth="120dp"
+            android:id="@+id/imageView2"
+            android:layout_below="@+id/info"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:layout_margin="10dp"
+            android:layout_marginTop="80dp"
+            />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:textSize="18sp"
+            android:text="Loging with Facebook"
+            android:textColor="#ffffff"
+            android:layout_above="@+id/login_button"
+            android:layout_centerHorizontal="true" />
+
+        <com.facebook.login.widget.LoginButton
+            xmlns:fb="http://schemas.android.com/apk/res-auto"
+            android:id="@+id/login_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerInParent="true"
+            android:maxHeight="80dp"
+            android:maxWidth="80dp"
+            fb:login_text=""
+            fb:logout_text=""
+            android:scaleType="centerInside"
+             />
+
+    </RelativeLayout>
+
+</RelativeLayout>

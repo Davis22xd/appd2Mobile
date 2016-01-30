@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<shape xmlns:android="http://schemas.android.com/apk/res/android" android:id="@+id/listview_background_shape">
+    <stroke android:width="5dp" android:color="#1d1c1c" />
+    <padding android:left="0dp"
+        android:top="5dp"
+        android:right="0dp"
+        android:bottom="5dp" />
+    <solid android:color="@color/colorPrimary" />
+</shape>

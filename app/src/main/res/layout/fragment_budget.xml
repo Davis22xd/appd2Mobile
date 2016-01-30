@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout
+    android:orientation="vertical"
+    android:baselineAligned="false"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:background="@drawable/fondos"
+    android:visibility="visible">
+
+        <View
+            android:id="@+id/myRectangleView"
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:layout_marginBottom="10dp"
+            android:background="@drawable/rectangle"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:elevation="20dp"/>
+
+        <SeekBar
+            android:id="@+id/seekBudget"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:progress="20"
+            android:layout_marginLeft="80dp"
+            android:layout_marginRight="80dp"
+            android:layout_marginBottom="20dp"
+            android:secondaryProgress="20"
+            android:layout_above="@+id/buttonNext"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:progressDrawable="@drawable/red_scrubber_progress_bar"
+            android:thumb="@drawable/white_scrabble_control" />
+        <TextView
+            android:id="@+id/seekValue"
+            android:layout_width="fill_parent"
+            android:layout_height="50dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="18sp"
+            android:textColor="#ffffff"
+            android:gravity="center"
+            android:background="@drawable/red_rectangle"
+            android:layout_above="@+id/buttonNext"
+            />
+
+        <Button
+            android:layout_width="fill_parent"
+            android:layout_height="80dp"
+            android:text="Next"
+            android:id="@+id/buttonNext"
+            android:elevation="20dp"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:maxHeight="20dp"
+            android:maxWidth="20dp"
+            android:scaleType="centerInside"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentRight="true"
+            android:layout_alignParentEnd="true"
+            android:background="@drawable/rectangle"
+            android:textColor="@color/text" />
+
+</LinearLayout>
+
+
