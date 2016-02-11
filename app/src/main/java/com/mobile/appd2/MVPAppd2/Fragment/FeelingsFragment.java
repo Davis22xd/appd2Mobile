@@ -7,17 +7,25 @@ import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
+import android.support.v7.widget.GridLayoutManager;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobile.appd2.MVPAppd2.Adapter.RecyclerViewAdapter;
+import com.mobile.appd2.MVPAppd2.Clases.Feeling;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenterImpl;
 import com.mobile.appd2.MVPAppd2.R;
+import com.mobile.appd2.MVPAppd2.UI.FeelingsActivity;
 import com.mobile.appd2.MVPAppd2.View.FeelingsStateView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -29,16 +37,14 @@ import com.mobile.appd2.MVPAppd2.View.FeelingsStateView;
  * create an instance of this fragment.
  */
 public class FeelingsFragment extends Fragment implements FeelingsStateView {
+
     private Context mContext;
     private FragmentActivity myContext;
-
     public Button btnNext;
-
     private int feeling;
-
     private OnFragmentInteractionListener mListener;
-
     private FeelingsPresenter feelingsPresenter;
+    private GridLayoutManager lLayout;
 
 
     public static FeelingsFragment newInstance() {
@@ -56,6 +62,7 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
         feelingsPresenter = new FeelingsPresenterImpl(this);
         SharedPreferences preference = getActivity().getPreferences(mContext.MODE_PRIVATE);
         feelingsPresenter.getPreference(preference);
+
     }
 
     @Override
@@ -73,8 +80,21 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
             }
         });
 
+        List<Feeling> rowListItem = getAllItemList();
+        lLayout = ((FeelingsActivity)getActivity()).createNewGrid();
+
+        RecyclerView rView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
+        rView.setHasFixedSize(true);
+        rView.setLayoutManager(lLayout);
+
+
+        RecyclerViewAdapter rcAdapter = ((FeelingsActivity)getActivity()).createAdapter(rowListItem);
+        rView.setAdapter(rcAdapter);
+
         return rootView;
     }
+
+
 
     // TODO: Rename method, update argument and hook method into UI event
     public void onButtonPressed(Uri uri) {
@@ -131,6 +151,19 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
         public void onFragmentInteraction(Uri uri);
+    }
+
+    private List<Feeling> getAllItemList(){
+
+        List<Feeling> feelingList = new ArrayList<Feeling>();
+        feelingList.add(new Feeling("Alternativo", R.drawable.alternativo));
+        feelingList.add(new Feeling("Aventurero", R.drawable.alternativo));
+        feelingList.add(new Feeling("Romántico", R.drawable.alternativo));
+        feelingList.add(new Feeling("Relajado", R.drawable.alternativo));
+        feelingList.add(new Feeling("Loco", R.drawable.alternativo));
+        feelingList.add(new Feeling("Elegante", R.drawable.alternativo));
+
+        return feelingList;
     }
 
 }

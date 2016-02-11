@@ -18,5 +18,6 @@
     <string name="date_view_set">The Date is: </string>
     <string name="date_selected"></string>
     <string name="time_selected"></string>
+    <string name="feeling_name">Alternativo</string>
 </resources>
 

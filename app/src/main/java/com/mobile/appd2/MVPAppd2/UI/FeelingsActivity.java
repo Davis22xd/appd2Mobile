@@ -14,6 +14,7 @@ import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
 import android.view.LayoutInflater;
 import android.view.Menu;
@@ -25,10 +26,14 @@ import android.widget.TimePicker;
 
 import com.facebook.login.LoginManager;
 import com.facebook.login.widget.ProfilePictureView;
+import com.mobile.appd2.MVPAppd2.Adapter.RecyclerViewAdapter;
+import com.mobile.appd2.MVPAppd2.Clases.Feeling;
 import com.mobile.appd2.MVPAppd2.Fragment.FeelingsFragment;
 import com.mobile.appd2.MVPAppd2.Fragment.DatePickerFragment;
 import com.mobile.appd2.MVPAppd2.Fragment.TimePickerFragment;
 import com.mobile.appd2.MVPAppd2.R;
+
+import java.util.List;
 
 public class FeelingsActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, FeelingsFragment.OnFragmentInteractionListener {
@@ -216,6 +221,18 @@ public class FeelingsActivity extends AppCompatActivity
                 BudgetActivity.this, feelingsActivity.class);
         startActivity(feelingsIntent);
         finish();*/
+    }
+
+    public GridLayoutManager createNewGrid(){
+
+        GridLayoutManager layout =new GridLayoutManager(this, 2);
+        return layout;
+    }
+
+    public RecyclerViewAdapter createAdapter(List<Feeling> rowListItem){
+
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(this, rowListItem);
+        return rcAdapter;
     }
 
 }
