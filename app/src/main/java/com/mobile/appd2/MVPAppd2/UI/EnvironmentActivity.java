@@ -24,53 +24,19 @@ import com.facebook.login.widget.ProfilePictureView;
 import com.mobile.appd2.MVPAppd2.Fragment.EnvironmentFragment;
 import com.mobile.appd2.MVPAppd2.R;
 
-public class EnvironmentActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, EnvironmentFragment.OnFragmentInteractionListener {
+public class EnvironmentActivity extends BaseActivity implements EnvironmentFragment.OnFragmentInteractionListener {
 
     private FragmentManager fm;
-
-    public String getUser_name() {
-        return user_name;
-    }
-
-    public void setUser_name(String user_name) {
-        this.user_name = user_name;
-    }
-
-    private String user_name;
-
-    public String getUser_id() {
-        return user_id;
-    }
-
-    public void setUser_id(String user_id) {
-        this.user_id = user_id;
-    }
-
-    private String user_id;
-    private TextView userName;
-    private ProfilePictureView userPicture;
-    public static LoginManager loginManager;
     private EnvironmentFragment environmentFragment;
     private static final String ENVIRONMENT_FRAGMENT_TAG = "ENVIRONMENT_FRAGMENT_TAG";
-    private SharedPreferences sharedpreferences;
-    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedpreferences = this.getSharedPreferences(
-                "com.mobile.appd2.MVPAppd2", Context.MODE_PRIVATE);
-        String userName = "com.mobile.appd2.MVPAppd2.FACEBOOK_NAME";
-        user_name =sharedpreferences.getString(userName, new String());
-        String userId = "com.mobile.appd2.MVPAppd2.FACEBOOK_ID";
-        user_id =sharedpreferences.getString(userId, new String());
-
         setContentView(R.layout.activity_environment);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
-
 
         DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
         ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
@@ -92,16 +58,6 @@ public class EnvironmentActivity extends AppCompatActivity
     }
 
     @Override
-    public void onBackPressed() {
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        if (drawer.isDrawerOpen(GravityCompat.START)) {
-            drawer.closeDrawer(GravityCompat.START);
-        } else {
-            super.onBackPressed();
-        }
-    }
-
-    @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.environment, menu);
@@ -109,86 +65,8 @@ public class EnvironmentActivity extends AppCompatActivity
     }
 
     @Override
-    public boolean onOptionsItemSelected(MenuItem item) {
-        // Handle action bar item clicks here. The action bar will
-        // automatically handle clicks on the Home/Up button, so long
-        // as you specify a parent activity in AndroidManifest.xml.
-        int id = item.getItemId();
-
-        //noinspection SimplifiableIfStatement
-        if (id == R.id.action_settings) {
-            return true;
-        }
-
-        return super.onOptionsItemSelected(item);
-    }
-
-    @SuppressWarnings("StatementWithEmptyBody")
-    @Override
-    public boolean onNavigationItemSelected(MenuItem item) {
-        // Handle navigation view item clicks here.
-        int id = item.getItemId();
-
-        if (id == R.id.nav_plan) {
-            // Handle the camera action
-        } else if (id == R.id.nav_discover) {
-
-        } else if (id == R.id.nav_activity) {
-
-        } else if (id == R.id.nav_invite) {
-
-        } else if (id == R.id.nav_notifications) {
-
-        } else if (id == R.id.nav_favorites) {
-
-        } else if (id == R.id.nav_logout) {
-            loginManager.getInstance().logOut();
-            gotoLogin();
-        }
-
-        DrawerLayout drawer = (DrawerLayout) findViewById(R.id.drawer_layout);
-        drawer.closeDrawer(GravityCompat.START);
-        return true;
-    }
-
-    @Override
     public void onFragmentInteraction(Uri uri) {
 
-    }
-
-    public void setNavigationHeader() {
-
-        NavigationView navigation_view = (NavigationView) findViewById(R.id.nav_view);
-
-        View header = LayoutInflater.from(this).inflate(R.layout.nav_header_login, null);
-        navigation_view.addHeaderView(header);
-
-        userName = (TextView) header.findViewById(R.id.user_name);
-        userPicture = (ProfilePictureView) header.findViewById(R.id.profilePicture);
-    }
-
-     /*
-       Set User Profile Information in Navigation Bar.
-     */
-
-    public void setUserName(String name) {
-        userName.setText(name);
-    }
-
-    public void setUserId(String id) {
-        userPicture.setProfileId(id);
-    }
-
-
-    public void setUserProfile() {
-
-        try {
-            setUserName(user_name);
-            setUserId(user_id);
-
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
     }
 
     public void gotoLogin() {

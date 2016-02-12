@@ -1,39 +1,25 @@
 package com.mobile.appd2.MVPAppd2.Fragment;
 
 import android.app.Activity;
-import android.app.DatePickerDialog;
-import android.app.Dialog;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
-import android.support.v4.app.DialogFragment;
 
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
-import android.widget.DatePicker;
-import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.facebook.AccessToken;
-import com.facebook.Profile;
 import com.mobile.appd2.MVPAppd2.Presenter.AvailabilityPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.AvailabilityPresenterImpl;
-import com.mobile.appd2.MVPAppd2.Presenter.LoginPrenterImpl;
-import com.mobile.appd2.MVPAppd2.Presenter.LoginPresenter;
 import com.mobile.appd2.MVPAppd2.R;
 import com.mobile.appd2.MVPAppd2.UI.AvailabilityActivity;
-import com.mobile.appd2.MVPAppd2.UI.BudgetActivity;
 import com.mobile.appd2.MVPAppd2.View.AvailabilityStateView;
-import com.mobile.appd2.MVPAppd2.View.LoginStateView;
-
-import java.util.Calendar;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -46,8 +32,8 @@ import java.util.Calendar;
 public class AvailabilityFragment extends Fragment implements AvailabilityStateView {
     private Context mContext;
     private FragmentActivity myContext;
-    private TextView textViewDate;
-    private TextView textViewTime;
+    private TextView buttonViewDate;
+    private TextView buttonViewTime;
     public Button btnNext;
 
     private int year;
@@ -84,8 +70,10 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_availability, container, false);
-        textViewDate = (TextView)rootView.findViewById(R.id.textView3);
-        textViewTime = (TextView)rootView.findViewById(R.id.textView4);
+        buttonViewDate = (TextView)rootView.findViewById(R.id.buttonDate);
+        buttonViewDate.setBackgroundResource(R.drawable.ic_date_range);
+        buttonViewTime = (TextView)rootView.findViewById(R.id.buttonTime);
+        buttonViewTime.setBackgroundResource(R.drawable.ic_av_timer);
 
         btnNext = (Button)rootView.findViewById(R.id.buttonNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -142,7 +130,7 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
     }
 
     public void showDate(int year, int month, int day) {
-        textViewDate.setText(new StringBuilder().append(day).append("/")
+        buttonViewDate.setText(new StringBuilder().append(day).append("/")
                 .append(month).append("/").append(year));
     }
 
@@ -153,7 +141,7 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
     }
 
     public void showTime(int hour, int minute) {
-        textViewTime.setText(new StringBuilder().append(hour).append("/")
+        buttonViewTime.setText(new StringBuilder().append(hour).append("/")
                 .append(minute));
     }
 

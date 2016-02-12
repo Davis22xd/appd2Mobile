@@ -1,7 +1,9 @@
 package com.mobile.appd2.MVPAppd2.UI;
 
+import android.content.Context;
 import android.content.Intent;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
@@ -53,6 +55,8 @@ public class FacebookLoginActivity extends AppCompatActivity implements Facebook
     }
 
     private String userName;
+    private SharedPreferences sharedpreferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -76,8 +80,14 @@ public class FacebookLoginActivity extends AppCompatActivity implements Facebook
         mainFragment.getProfile();
         Intent budgetIntent = new Intent().setClass(
                 FacebookLoginActivity.this, BudgetActivity.class);
-        budgetIntent.putExtra("FACEBOOK_ID", userId);
-        budgetIntent.putExtra("FACEBOOK_NAME", userName);
+
+        SharedPreferences sharedpreferences = this.getSharedPreferences(
+                "com.mobile.appd2.MVPAppd2", Context.MODE_PRIVATE);
+        editor = sharedpreferences.edit();
+        editor.putString("USER_NAME", userName);
+        editor.putString("USER_ID", userId);
+//        budgetIntent.putExtra("FACEBOOK_ID", userId);
+//        budgetIntent.putExtra("FACEBOOK_NAME", userName);
         startActivity(budgetIntent);
         finish();
     }

@@ -19,7 +19,6 @@
         android:background="@drawable/rectangle"
         android:elevation="20dp" />
 
-
     <TextView
         android:id="@+id/seekValue"
         android:layout_width="fill_parent"
@@ -30,16 +29,7 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/text"
-        android:text="@string/date_label_set"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
+    
     <Button
         android:id="@+id/buttonNature"
         android:layout_width="fill_parent"

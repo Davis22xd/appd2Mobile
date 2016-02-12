@@ -9,17 +9,6 @@
     android:orientation="vertical"
     android:visibility="visible">
 
-    <View
-        android:id="@+id/myRectangleView"
-        android:layout_width="fill_parent"
-        android:layout_height="80dp"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_marginBottom="10dp"
-        android:background="@drawable/rectangle"
-        android:elevation="20dp" />
-
-
     <TextView
         android:id="@+id/seekValue"
         android:layout_width="fill_parent"
@@ -30,52 +19,12 @@
         android:gravity="center"
         android:textColor="#ffffff"
         android:textSize="18sp" />
-    <TextView
-        android:id="@+id/textView1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:textColor="@color/text"
-        android:text="@string/date_label_set"
-        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <TextView
-        android:id="@+id/textView2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/button1"
-        android:layout_marginTop="66dp"
-        android:layout_toLeftOf="@+id/button1"
-        android:text="@string/date_view_set"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/text"/>
-
-    <TextView
-        android:id="@+id/textView3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/textView2"
-        android:layout_marginTop="72dp"
-        android:text="@string/date_selected"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/text"/>
-    <TextView
-        android:id="@+id/textView4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/button1"
-        android:layout_below="@+id/textView3"
-        android:layout_marginTop="72dp"
-        android:text="@string/time_selected"
-        android:textAppearance="?android:attr/textAppearanceMedium"
-        android:textColor="@color/text"/>
     <Button
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         android:text="Fecha"
+        android:id="@+id/buttonDate"
         android:onClick="showDatePickerDialog"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -83,6 +32,7 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/rectangle"
+        android:src="@drawable/ic_date_range"
         android:elevation="20dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
@@ -94,6 +44,7 @@
         android:layout_width="fill_parent"
         android:layout_height="80dp"
         android:text="Hora"
+        android:id="@+id/buttonTime"
         android:onClick="showTimePickerDialog"
         android:layout_alignParentBottom="true"
         android:layout_alignParentEnd="true"
@@ -101,14 +52,13 @@
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
         android:background="@drawable/rectangle"
+        android:src="@drawable/ic_av_timer"
         android:elevation="20dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
         android:scaleType="centerInside"
         android:textColor="@color/text"
         />
-
-
     <Button
         android:id="@+id/buttonNext"
         android:layout_width="fill_parent"
