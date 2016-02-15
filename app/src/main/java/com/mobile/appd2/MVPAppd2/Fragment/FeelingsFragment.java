@@ -17,6 +17,7 @@ import android.widget.Button;
 import android.widget.Toast;
 
 import com.mobile.appd2.MVPAppd2.Adapter.RecyclerViewAdapter;
+import com.mobile.appd2.MVPAppd2.App;
 import com.mobile.appd2.MVPAppd2.Clases.Feeling;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenterImpl;
@@ -59,10 +60,9 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        feelingsPresenter = new FeelingsPresenterImpl(this);
-        SharedPreferences preference = getActivity().getPreferences(mContext.MODE_PRIVATE);
+        feelingsPresenter = new FeelingsPresenterImpl();
+        SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
         feelingsPresenter.getPreference(preference);
-
     }
 
     @Override
@@ -72,23 +72,32 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
         View rootView = inflater.inflate(R.layout.fragment_feelings, container, false);
 
 
-        btnNext = (Button)rootView.findViewById(R.id.buttonNext);
-        btnNext.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                feelingsPresenter.saveFeelings(feeling);
-            }
-        });
+//        btnNext = (Button)rootView.findViewById(R.id.buttonNext);
+//        btnNext.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//            public void onClick(View v) {
+//                feelingsPresenter.saveFeelings(feeling);
+//            }
+//        });
 
         List<Feeling> rowListItem = getAllItemList();
-        lLayout = ((FeelingsActivity)getActivity()).createNewGrid();
+        lLayout  =new GridLayoutManager(App.getStaticContext(), 2);
+
+//        lLayout = ((FeelingsActivity)getActivity()).createNewGrid();
 
         RecyclerView rView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
 
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(App.getStaticContext(), rowListItem,feelingsPresenter);
 
-        RecyclerViewAdapter rcAdapter = ((FeelingsActivity)getActivity()).createAdapter(rowListItem);
+//        RecyclerViewAdapter rcAdapter = ((FeelingsActivity)getActivity()).createAdapter(rowListItem);
+//        rcAdapter.setOnClickListener(new View.OnClickListener() {
+//            @Override
+//          public void onItemClick(View v) {
+//                feelingsPresenter.saveFeelings(feeling);
+//            }});
+
         rView.setAdapter(rcAdapter);
 
         return rootView;

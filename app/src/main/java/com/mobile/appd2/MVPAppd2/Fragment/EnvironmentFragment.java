@@ -14,6 +14,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobile.appd2.MVPAppd2.App;
 import com.mobile.appd2.MVPAppd2.Presenter.EnvironmentPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.EnvironmentPresenterImpl;
 import com.mobile.appd2.MVPAppd2.R;
@@ -56,7 +57,7 @@ public class EnvironmentFragment extends Fragment implements EnvironmentStateVie
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         environmentPresenter = new EnvironmentPresenterImpl(this);
-        SharedPreferences preference = getActivity().getPreferences(mContext.MODE_PRIVATE);
+        SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
         environmentPresenter.getPreference(preference);
     }
 

@@ -105,10 +105,10 @@ public class FeelingsActivity extends BaseActivity implements FeelingsFragment.O
         return layout;
     }
 
-    public RecyclerViewAdapter createAdapter(List<Feeling> rowListItem){
-
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(this, rowListItem);
-        return rcAdapter;
-    }
+//    public RecyclerViewAdapter createAdapter(List<Feeling> rowListItem){
+//
+////        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(this, rowListItem,);
+////        return rcAdapter;
+//    }
 
 }

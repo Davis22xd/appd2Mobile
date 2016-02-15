@@ -14,6 +14,7 @@ import android.widget.SeekBar;
 import android.widget.TextView;
 
 import com.facebook.FacebookSdk;
+import com.mobile.appd2.MVPAppd2.App;
 import com.mobile.appd2.MVPAppd2.Presenter.BudgetPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.BudgetPresenterImpl;
 import com.mobile.appd2.MVPAppd2.R;
@@ -58,7 +59,7 @@ public class BudgetFragment extends Fragment implements BudgetStateView {
         super.onCreate(savedInstanceState);
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
        budgetPresenter = new BudgetPresenterImpl(this);
-        SharedPreferences preference = getActivity().getPreferences(mContext.MODE_PRIVATE);
+        SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
         budgetPresenter.generateVoID(preference);
     }
 

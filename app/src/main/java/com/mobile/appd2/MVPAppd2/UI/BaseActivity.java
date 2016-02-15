@@ -58,7 +58,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        sharedpreferences = this.getSharedPreferences(
+        sharedpreferences = getSharedPreferences(
                 "com.mobile.appd2.MVPAppd2", Context.MODE_PRIVATE);
 
         String userName = "com.mobile.appd2.MVPAppd2.FACEBOOK_NAME";
@@ -76,7 +76,6 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
             super.onBackPressed();
         }
     }
-
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
@@ -121,7 +120,7 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
         return true;
     }
 
-    /*
+/*
         Set Navigation header by using Layout Inflater.
      */
 

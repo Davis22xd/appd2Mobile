@@ -12,6 +12,7 @@
 
 
     <application
+        android:name=".App"
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -42,12 +43,6 @@
             android:theme="@style/AppTheme.NoActionBar" >
         </activity>
         <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.FeelingActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
             android:name="com.mobile.appd2.MVPAppd2.UI.EnvironmentActivity"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
@@ -55,36 +50,6 @@
         </activity>
         <activity
             android:name="com.mobile.appd2.MVPAppd2.UI.FacebookLoginActivity"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.SampleCirclesDefault"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.SampleCirclesInitialPage"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.SampleCirclesStyledLayout"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.SampleCirclesStyledMethods"
-            android:label="@string/app_name"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppTheme.NoActionBar" >
-        </activity>
-        <activity
-            android:name="com.mobile.appd2.MVPAppd2.UI.SampleCirclesWithListener"
             android:label="@string/app_name"
             android:screenOrientation="portrait"
             android:theme="@style/AppTheme.NoActionBar" >
