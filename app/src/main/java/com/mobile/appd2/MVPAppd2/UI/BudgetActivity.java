@@ -15,6 +15,8 @@ import com.google.android.gms.common.api.GoogleApiClient;
 import com.mobile.appd2.MVPAppd2.Fragment.BudgetFragment;
 import com.mobile.appd2.MVPAppd2.R;
 
+import java.util.UUID;
+
 public class BudgetActivity extends BaseActivity implements  BudgetFragment.OnFragmentInteractionListener {
 
     private FragmentManager fm;
@@ -66,10 +68,13 @@ public class BudgetActivity extends BaseActivity implements  BudgetFragment.OnFr
         return true;
     }
 
-    public void gotoAvailability() {
+    public void gotoAvailability(UUID uniqueKey, int budget) {
 
         Intent availabilityIntent = new Intent().setClass(
                 BudgetActivity.this, AvailabilityActivity.class);
+        String uui = uniqueKey.toString();
+        availabilityIntent.putExtra("VoKey",uui );
+        availabilityIntent.putExtra("BUDGET", budget);
         startActivity(availabilityIntent);
         finish();
     }

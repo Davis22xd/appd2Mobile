@@ -7,6 +7,7 @@ import android.content.SharedPreferences;
  */
 public interface BudgetPresenter {
 
-    public void saveBudget(int budget);
-    public void generateVoID(SharedPreferences preference);
+      void saveBudget(int budget);
+//    public void generateVoID(SharedPreferences preference);
+//    public int returnBudget();
 }

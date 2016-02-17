@@ -18,48 +18,14 @@ public class FeelingsInteractorImpl implements FeelingsInteractor {
     private FeelingsStateView FeelingsView;
 
 
-    private enum feelings {
-
-        ALTERNATIVO("Alternativo"),
-        AVENTURERO("Aventurero"),
-        ROMANTICO("Romántico"),
-        RELAJADO("Relajado"),
-        LOCO("Loco"),
-        ELEGANTE("Elegante");
-
-        private final String text;
-
-        /**
-         * @param text
-         */
-        private feelings(final String text) {
-            this.text = text;
-        }
-
-        /* (non-Javadoc)
-         * @see java.lang.Enum#toString()
-         */
-        @Override
-        public String toString() {
-            return text;
-        }
-
-    }
-
-    public FeelingsInteractorImpl(FeelingsListener FeelingsListener) {
+    public FeelingsInteractorImpl(FeelingsStateView feelingsStateView, FeelingsListener FeelingsListener) {
         this.FeelingsListener = FeelingsListener;
+        this.FeelingsView = feelingsStateView;
     }
 
     @Override
     public void saveFeelings(int feeling) {
-        editor.putString("feeling",getNameMood(feeling));
-        printDatafromPreference();
-    }
-
-    @Override
-    public void getPreference(SharedPreferences preference) {
-        sharedpreferences = preference;
-        editor = sharedpreferences.edit();
+        FeelingsView.showConfirmationPlan(getNameMood(feeling));
     }
 
     private String getNameMood (int feeling){
@@ -82,12 +48,6 @@ public class FeelingsInteractorImpl implements FeelingsInteractor {
         }
 
         return moodName;
-    }
-
-    private void printDatafromPreference (){
-        String feeling = "com.mobile.appd2.MVPAppd2.feeling";
-        feeling =sharedpreferences.getString(feeling, new String());
-        Log.d("Feelings interactor: ",feeling);
     }
 
 }

@@ -9,8 +9,8 @@ import com.mobile.appd2.MVPAppd2.Listener.BudgetListener;
  */
 public interface BudgetInteractor {
 
-    public void saveBudget(int budget);
+     void saveBudget(int budget);
 
-    public void generateVoID(SharedPreferences preference);
+//    public void generateVoID(SharedPreferences preference);
 
 }

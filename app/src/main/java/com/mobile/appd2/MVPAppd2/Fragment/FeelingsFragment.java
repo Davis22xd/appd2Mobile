@@ -8,7 +8,6 @@ import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v4.app.FragmentActivity;
 import android.support.v7.widget.GridLayoutManager;
-import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -16,7 +15,9 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.Toast;
 
-import com.mobile.appd2.MVPAppd2.Adapter.RecyclerViewAdapter;
+import com.mobile.appd2.MVPAppd2.Clases.PlanVo;
+import com.mobile.appd2.MVPAppd2.CustomViews.CustomDialog;
+import com.mobile.appd2.MVPAppd2.CustomViews.RecyclerViewAdapter;
 import com.mobile.appd2.MVPAppd2.App;
 import com.mobile.appd2.MVPAppd2.Clases.Feeling;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenter;
@@ -46,11 +47,11 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
     private OnFragmentInteractionListener mListener;
     private FeelingsPresenter feelingsPresenter;
     private GridLayoutManager lLayout;
+    private PlanVo planVo;
 
 
     public static FeelingsFragment newInstance() {
-        FeelingsFragment fragment = new FeelingsFragment();
-        return fragment;
+        return new FeelingsFragment();
     }
 
     public FeelingsFragment() {
@@ -60,9 +61,7 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        feelingsPresenter = new FeelingsPresenterImpl();
-        SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
-        feelingsPresenter.getPreference(preference);
+        feelingsPresenter = new FeelingsPresenterImpl(this);
     }
 
     @Override
@@ -88,8 +87,7 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
         RecyclerView rView = (RecyclerView)rootView.findViewById(R.id.recycler_view);
         rView.setHasFixedSize(true);
         rView.setLayoutManager(lLayout);
-
-        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(App.getStaticContext(), rowListItem,feelingsPresenter);
+        RecyclerViewAdapter rcAdapter = new RecyclerViewAdapter(App.getStaticContext(), rowListItem, this);
 
 //        RecyclerViewAdapter rcAdapter = ((FeelingsActivity)getActivity()).createAdapter(rowListItem);
 //        rcAdapter.setOnClickListener(new View.OnClickListener() {
@@ -147,6 +145,20 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
                 Toast.LENGTH_LONG).show();
     }
 
+    @Override
+    public void recyclerViewListClicked(View v, int position) {
+        Toast.makeText(v.getContext(), "Clicked feeling Position = " + position, Toast.LENGTH_SHORT).show();
+        feelingsPresenter.saveFeelings(position);
+
+    }
+
+    @Override
+    public void showConfirmationPlan(String feeling) {
+        planVo = ((FeelingsActivity)getActivity()).createPlan(feeling);
+        CustomDialog cdd=new CustomDialog(myContext,planVo);
+        cdd.show();
+    }
+
     /**
      * This interface must be implemented by activities that contain this
      * fragment to allow an interaction in this fragment to be communicated
@@ -159,18 +171,18 @@ public class FeelingsFragment extends Fragment implements FeelingsStateView {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
     private List<Feeling> getAllItemList(){
 
-        List<Feeling> feelingList = new ArrayList<Feeling>();
+        List<Feeling> feelingList = new ArrayList<>();
         feelingList.add(new Feeling("Alternativo", R.drawable.alternativo));
-        feelingList.add(new Feeling("Aventurero", R.drawable.alternativo));
-        feelingList.add(new Feeling("Romántico", R.drawable.alternativo));
-        feelingList.add(new Feeling("Relajado", R.drawable.alternativo));
-        feelingList.add(new Feeling("Loco", R.drawable.alternativo));
-        feelingList.add(new Feeling("Elegante", R.drawable.alternativo));
+        feelingList.add(new Feeling("Aventurero", R.drawable.aventurero));
+        feelingList.add(new Feeling("Romántico", R.drawable.romantico));
+        feelingList.add(new Feeling("Relajado", R.drawable.relajado));
+        feelingList.add(new Feeling("Loco", R.drawable.loco));
+        feelingList.add(new Feeling("Elegante", R.drawable.elegante));
 
         return feelingList;
     }

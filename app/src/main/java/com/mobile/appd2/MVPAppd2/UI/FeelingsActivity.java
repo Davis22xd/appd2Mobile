@@ -1,39 +1,19 @@
 package com.mobile.appd2.MVPAppd2.UI;
 
-import android.app.DatePickerDialog;
-import android.app.TimePickerDialog;
-import android.content.Context;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.DialogFragment;
 import android.support.v4.app.FragmentManager;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.GridLayoutManager;
 import android.support.v7.widget.Toolbar;
-import android.view.LayoutInflater;
 import android.view.Menu;
-import android.view.MenuItem;
-import android.view.View;
-import android.widget.DatePicker;
-import android.widget.TextView;
-import android.widget.TimePicker;
 
-import com.facebook.login.LoginManager;
-import com.facebook.login.widget.ProfilePictureView;
-import com.mobile.appd2.MVPAppd2.Adapter.RecyclerViewAdapter;
-import com.mobile.appd2.MVPAppd2.Clases.Feeling;
 import com.mobile.appd2.MVPAppd2.Fragment.FeelingsFragment;
-import com.mobile.appd2.MVPAppd2.Fragment.DatePickerFragment;
-import com.mobile.appd2.MVPAppd2.Fragment.TimePickerFragment;
 import com.mobile.appd2.MVPAppd2.R;
-
-import java.util.List;
 
 public class FeelingsActivity extends BaseActivity implements FeelingsFragment.OnFragmentInteractionListener {
 
@@ -45,7 +25,7 @@ public class FeelingsActivity extends BaseActivity implements FeelingsFragment.O
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getExtras();
         setContentView(R.layout.activity_feelings);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -87,7 +67,7 @@ public class FeelingsActivity extends BaseActivity implements FeelingsFragment.O
 
         Intent loginIntent = new Intent().setClass(
                 FeelingsActivity.this, FacebookLoginActivity.class);
-        startActivity(loginIntent);
+//        startActivity(loginIntent);
         finish();
     }
 
@@ -99,11 +79,11 @@ public class FeelingsActivity extends BaseActivity implements FeelingsFragment.O
         finish();*/
     }
 
-    public GridLayoutManager createNewGrid(){
-
-        GridLayoutManager layout =new GridLayoutManager(this, 2);
-        return layout;
-    }
+//    public GridLayoutManager createNewGrid(){
+//
+//        GridLayoutManager layout =new GridLayoutManager(this, 2);
+//        return layout;
+//    }
 
 //    public RecyclerViewAdapter createAdapter(List<Feeling> rowListItem){
 //

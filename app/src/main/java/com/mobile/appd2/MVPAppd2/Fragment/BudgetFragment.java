@@ -22,6 +22,8 @@ import com.mobile.appd2.MVPAppd2.UI.BudgetActivity;
 import com.mobile.appd2.MVPAppd2.UI.FacebookLoginActivity;
 import com.mobile.appd2.MVPAppd2.View.BudgetStateView;
 
+import java.util.UUID;
+
 /**
  * A simple {@link Fragment} subclass.
  * Activities that contain this fragment must implement the
@@ -46,8 +48,7 @@ public class BudgetFragment extends Fragment implements BudgetStateView {
 
 
     public static BudgetFragment newInstance() {
-        BudgetFragment fragment = new BudgetFragment();
-        return fragment;
+        return new BudgetFragment();
     }
 
     public BudgetFragment() {
@@ -60,7 +61,7 @@ public class BudgetFragment extends Fragment implements BudgetStateView {
         FacebookSdk.sdkInitialize(getActivity().getApplicationContext());
        budgetPresenter = new BudgetPresenterImpl(this);
         SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
-        budgetPresenter.generateVoID(preference);
+//        budgetPresenter.generateVoID(preference);
     }
 
     @Override
@@ -130,8 +131,8 @@ public class BudgetFragment extends Fragment implements BudgetStateView {
     }
 
     @Override
-    public void goNextStep() {
-        ((BudgetActivity)getActivity()).gotoAvailability();
+    public void goNextStep(UUID uniqueKey,int budget) {
+        ((BudgetActivity)getActivity()).gotoAvailability(uniqueKey,budget);
     }
 
     /**
@@ -146,7 +147,7 @@ public class BudgetFragment extends Fragment implements BudgetStateView {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+         void onFragmentInteraction(Uri uri);
     }
 
 }

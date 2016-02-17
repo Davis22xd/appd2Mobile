@@ -7,8 +7,6 @@ import android.content.SharedPreferences;
  */
 public interface FeelingsInteractor {
 
-    public void saveFeelings(int feeling);
-
-    public void getPreference(SharedPreferences preference);
+    void saveFeelings(int feeling);
 
 }

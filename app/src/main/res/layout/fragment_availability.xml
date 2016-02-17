@@ -1,24 +1,21 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="@drawable/fondos"
     android:baselineAligned="false"
     android:orientation="vertical"
     android:visibility="visible">
 
-    <TextView
-        android:id="@+id/seekValue"
+    <View
+        android:id="@+id/myRectangleView"
         android:layout_width="fill_parent"
-        android:layout_height="50dp"
-        android:layout_above="@+id/buttonNext"
+        android:layout_height="80dp"
         android:layout_marginBottom="10dp"
-        android:background="@drawable/red_rectangle"
-        android:gravity="center"
-        android:textColor="#ffffff"
-        android:textSize="18sp" />
+        android:background="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:elevation="5dp"/>
 
     <Button
         android:layout_width="fill_parent"
@@ -31,13 +28,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:src="@drawable/ic_date_range"
+        android:layout_marginBottom="10dp"
+        android:background="#000000"
         android:elevation="20dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
         android:scaleType="centerInside"
         android:textColor="@color/text"
+        android:padding="16dp"
+        android:drawableLeft="@drawable/ic_date_range"
+        android:textSize="24sp"
         />
 
     <Button
@@ -51,13 +51,16 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:src="@drawable/ic_av_timer"
-        android:elevation="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="#000000"
+        android:drawableLeft="@drawable/ic_av_timer"
+        android:elevation="5dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
         android:scaleType="centerInside"
         android:textColor="@color/text"
+        android:padding="16dp"
+        android:textSize="24sp"
         />
     <Button
         android:id="@+id/buttonNext"
@@ -68,10 +71,12 @@
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
         android:layout_alignParentStart="true"
-        android:background="@drawable/rectangle"
-        android:elevation="20dp"
+        android:layout_marginBottom="10dp"
+        android:background="#000000"
+        android:elevation="5dp"
         android:maxHeight="20dp"
         android:maxWidth="20dp"
+        android:padding="16dp"
         android:scaleType="centerInside"
         android:text="Next"
         android:textColor="@color/text" />

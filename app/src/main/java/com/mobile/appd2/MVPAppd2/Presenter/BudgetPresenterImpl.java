@@ -17,17 +17,17 @@ public class BudgetPresenterImpl implements BudgetPresenter {
     private BudgetInteractor BudgetInterator;
     public BudgetPresenterImpl(BudgetStateView BudgetStateView) {
         this.BudgetStateView = BudgetStateView;
-        BudgetInterator = new BudgetInteractorImpl();
+        BudgetInterator = new BudgetInteractorImpl(this.BudgetStateView);
     }
 
     @Override
     public void saveBudget(int budget) {
         BudgetInterator.saveBudget(budget);
-        BudgetStateView.goNextStep();
     }
 
-    @Override
-    public void generateVoID(SharedPreferences preference) {
-        BudgetInterator.generateVoID(preference);
-    }
+//    @Override
+//    public void generateVoID(SharedPreferences preference) {
+//        BudgetInterator.generateVoID(preference);
+//    }
+
 }

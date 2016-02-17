@@ -18,6 +18,7 @@ import com.facebook.Profile;
 import com.facebook.login.LoginManager;
 import com.facebook.login.widget.ProfilePictureView;
 import com.google.android.gms.common.api.GoogleApiClient;
+import com.mobile.appd2.MVPAppd2.Clases.PlanVo;
 import com.mobile.appd2.MVPAppd2.R;
 
 /**
@@ -43,6 +44,61 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
     private String user_name;
     private String user_id;
     private TextView userName;
+
+    public String getVoID() {
+        return VoID;
+    }
+
+    public void setVoID(String voID) {
+        VoID = voID;
+    }
+
+    public int getMinute() {
+        return minute;
+    }
+
+    public void setMinute(int minute) {
+        this.minute = minute;
+    }
+
+    public int getHour() {
+        return hour;
+    }
+
+    public void setHour(int hour) {
+        this.hour = hour;
+    }
+
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    public int getBudget() {
+        return budget;
+    }
+
+    public void setBudget(int budget) {
+        this.budget = budget;
+    }
+
+    public PlanVo planVo;
+
+    public String getFeeling() {
+        return feeling;
+    }
+
+    public void setFeeling(String feeling) {
+        this.feeling = feeling;
+    }
+
+    public String feeling;
+
+    private String VoID, date;
+    private int budget, hour, minute;
     private ProfilePictureView userPicture;
     public static LoginManager loginManager;
     private SharedPreferences sharedpreferences;
@@ -62,9 +118,9 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 "com.mobile.appd2.MVPAppd2", Context.MODE_PRIVATE);
 
         String userName = "com.mobile.appd2.MVPAppd2.FACEBOOK_NAME";
-        user_name =sharedpreferences.getString(userName, new String());
+        user_name =sharedpreferences.getString(userName, "");
         String userId = "com.mobile.appd2.MVPAppd2.FACEBOOK_ID";
-        user_id =sharedpreferences.getString(userId, new String());
+        user_id =sharedpreferences.getString(userId, "");
     }
 
     @Override
@@ -165,6 +221,38 @@ public class BaseActivity extends AppCompatActivity implements NavigationView.On
                 BaseActivity.this, FacebookLoginActivity.class);
         startActivity(loginIntent);
         finish();
+    }
+
+    public void getExtras(){
+
+        Bundle extras = getIntent().getExtras();
+        if(extras == null) {
+            VoID= null;
+            budget=0;
+            date = null;
+            hour = 0;
+            minute =0;
+        } else {
+            VoID= extras.getString("VoKey");
+            budget = extras.getInt("BUDGET");
+            date = extras.getString("DATE");
+            hour = extras.getInt("HOUR");
+            minute =extras.getInt("MINUTE");
+        }
+    }
+
+    public void putExtras(Intent intent){
+        intent.putExtra("VoKey", getVoID());
+        intent.putExtra("BUDGET", getBudget());
+        intent.putExtra("DATE", getDate());
+        intent.putExtra("HOUR", getHour());
+        intent.putExtra("MINUTE", getMinute());
+    }
+
+    public PlanVo createPlan(String feeling){
+        setFeeling(feeling);
+        planVo = new PlanVo(getVoID(),getBudget(),getDate(),getHour(),getMinute(),getFeeling());
+        return planVo;
     }
 
 }

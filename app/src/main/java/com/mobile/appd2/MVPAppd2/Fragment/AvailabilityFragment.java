@@ -50,8 +50,7 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
 
 
     public static AvailabilityFragment newInstance() {
-        AvailabilityFragment fragment = new AvailabilityFragment();
-        return fragment;
+        return new AvailabilityFragment();
     }
 
     public AvailabilityFragment() {
@@ -62,8 +61,6 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         availabilityPresenter = new AvailabilityPresenterImpl(this);
-        SharedPreferences preference = getActivity().getPreferences(App.getStaticContext().MODE_PRIVATE);
-        availabilityPresenter.getPreference(preference);
     }
 
     @Override
@@ -72,9 +69,7 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
         // Inflate the layout for this fragment
         View rootView = inflater.inflate(R.layout.fragment_availability, container, false);
         buttonViewDate = (TextView)rootView.findViewById(R.id.buttonDate);
-        buttonViewDate.setBackgroundResource(R.drawable.ic_date_range);
         buttonViewTime = (TextView)rootView.findViewById(R.id.buttonTime);
-        buttonViewTime.setBackgroundResource(R.drawable.ic_av_timer);
 
         btnNext = (Button)rootView.findViewById(R.id.buttonNext);
         btnNext.setOnClickListener(new View.OnClickListener() {
@@ -117,8 +112,8 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
     }
 
     @Override
-    public void goNextStep() {
-            ((AvailabilityActivity)getActivity()).gotoFeelings();
+    public void goNextStep(String date, int hour, int minute) {
+            ((AvailabilityActivity)getActivity()).gotoFeelings(date,hour,minute);
 
     }
 
@@ -163,7 +158,7 @@ public class AvailabilityFragment extends Fragment implements AvailabilityStateV
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        public void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(Uri uri);
     }
 
 }

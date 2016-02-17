@@ -7,27 +7,34 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.mobile.appd2.MVPAppd2.App;
+import com.mobile.appd2.MVPAppd2.CustomViews.CustomDialog;
+import com.mobile.appd2.MVPAppd2.CustomViews.RecyclerViewAdapter;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenter;
 import com.mobile.appd2.MVPAppd2.Presenter.FeelingsPresenterImpl;
 import com.mobile.appd2.MVPAppd2.R;
+import com.mobile.appd2.MVPAppd2.UI.FeelingsActivity;
 
 public class RecyclerViewHolders extends RecyclerView.ViewHolder implements View.OnClickListener{
 
     public TextView feelingName;
     public ImageView feelingPhoto;
-    private FeelingsPresenter feelingsPresenter;
+    private static RecyclerViewAdapter itemListener;
 
-    public RecyclerViewHolders(View itemView, FeelingsPresenter presenter) {
+    public RecyclerViewHolders(View itemView, RecyclerViewAdapter viewAdapter) {
         super(itemView);
         itemView.setOnClickListener(this);
-        feelingsPresenter = presenter;
+        this.itemListener = viewAdapter;
         feelingName = (TextView)itemView.findViewById(R.id.feeling_name);
         feelingPhoto = (ImageView)itemView.findViewById(R.id.feeling_photo);
+
     }
 
+
     @Override
-    public void onClick(View view) {
-        feelingsPresenter.saveFeelings(getPosition());
-        Toast.makeText(view.getContext(), "Clicked feeling Position = " + getPosition(), Toast.LENGTH_SHORT).show();
+    public void onClick(View v)
+    {
+        itemListener.recyclerViewListClicked(v, this.getPosition());
+
     }
 }

@@ -22,16 +22,10 @@ public class AvailabilityPresenterImpl implements AvailabilityPresenter, Availab
 
     @Override
     public void saveAvailability(int year,int monthOfYear, int dayOfMonth, int hourOfDay, int minute) {
-        boolean result =AvailabilityInterator.saveAvailability(year, monthOfYear, dayOfMonth, hourOfDay, minute);
-        if(result==true){
-            AvailabilityStateView.goNextStep();
-        }
+        AvailabilityInterator.saveAvailability(year, monthOfYear, dayOfMonth, hourOfDay, minute);
+
     }
 
-    @Override
-    public void getPreference(SharedPreferences preference) {
-       AvailabilityInterator.getPreference(preference);
-    }
 
     @Override
     public void onMessageError(String msg) {

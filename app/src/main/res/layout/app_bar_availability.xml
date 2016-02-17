@@ -5,13 +5,13 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
-    android:layout_height="400dp"
+    android:layout_height="wrap_content"
     android:fitsSystemWindows="true"
     tools:context=".AvailabilityActivity">
 
     <android.support.design.widget.AppBarLayout
         android:layout_width="match_parent"
-        android:layout_height="400dp"
+        android:layout_height="wrap_content"
         android:theme="@style/AppTheme.AppBarOverlay"
         android:id="@+id/app_bar"
         android:fitsSystemWindows="true">
@@ -19,13 +19,13 @@
         <android.support.design.widget.CollapsingToolbarLayout
             android:id="@+id/toolbar_layout"
             android:layout_width="match_parent"
-            android:layout_height="400dp"
+            android:layout_height="wrap_content"
             android:fitsSystemWindows="true"
             app:contentScrim="?attr/colorPrimary"
             app:layout_scrollFlags="scroll|exitUntilCollapsed">
 
             <LinearLayout android:orientation="vertical"
-                android:layout_width="match_parent" android:layout_height="400dp"
+                android:layout_width="match_parent" android:layout_height="wrap_content"
                 android:layout_marginTop="0dp"
                 android:background="@drawable/time"
                 android:layout_gravity="center_horizontal|center"

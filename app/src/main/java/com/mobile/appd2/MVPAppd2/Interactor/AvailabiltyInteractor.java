@@ -7,8 +7,8 @@ import android.content.SharedPreferences;
  */
 public interface AvailabiltyInteractor {
 
-    public boolean saveAvailability(int year,int monthOfYear, int dayOfMonth, int hourOfDay, int minute);
+    void saveAvailability(int year,int monthOfYear, int dayOfMonth, int hourOfDay, int minute);
 
-    public void getPreference(SharedPreferences preference);
+//    public void getPreference(SharedPreferences preference);
 
 }

@@ -72,13 +72,23 @@ public class AvailabilityInteractorImpl implements AvailabiltyInteractor {
         }
     };
 
+    public String getDate() {
+        return date;
+    }
+
+    public void setDate(String date) {
+        this.date = date;
+    }
+
+    private String date;
+
     public AvailabilityInteractorImpl(AvailabilityStateView availabilityView, AvailabilityListener availabilityListener) {
         this.availabilityView = availabilityView;
         this.availabilityListener = availabilityListener;
     }
 
     @Override
-    public boolean saveAvailability(int year,int monthOfYear, int dayOfMonth, int hourOfDay, int minute) {
+    public void saveAvailability(int year,int monthOfYear, int dayOfMonth, int hourOfDay, int minute) {
         availability = Calendar.getInstance();
         availability.set(Calendar.YEAR, year);
         availability.set(Calendar.MONTH, monthOfYear);
@@ -89,38 +99,36 @@ public class AvailabilityInteractorImpl implements AvailabiltyInteractor {
 
         boolean validation = validateDate(availability);
 
-        if(validation==true){
-            Gson gson = new Gson();
-            String stringAvailability = gson.toJson(getAvailability());
-
-            editor.putString("Availability", String.valueOf(stringAvailability));
-            System.out.println("la clave es: " + availability);
-            return true;
+        if(validation){
+//            Gson gson = new Gson();
+//            String stringAvailability = gson.toJson(getAvailability());
+            availabilityView.goNextStep(date,availability.get(Calendar.HOUR_OF_DAY),availability.get(Calendar.MINUTE));
+//            editor.putString("Availability", String.valueOf(stringAvailability));
+//            System.out.println("la clave es: " + availability);
         }
 
         else{
             availabilityListener.onMessageError("Seleccione una fecha correcta");
-            return false;
         }
 
 
-    }
 
-    @Override
-    public void getPreference(SharedPreferences preference) {
-        sharedpreferences = preference;
-        editor = sharedpreferences.edit();
+
     }
 
     public boolean validateDate(Calendar availability){
 
-        int year = availability.get(Calendar.YEAR);
-        int month = availability.get(Calendar.MONTH);
-        int day = availability.get(Calendar.DAY_OF_MONTH);
-        boolean validation = false;
-
+        boolean validation;
         Calendar calendarToday = Calendar.getInstance();
+
         if(availability.after(calendarToday)){
+            int year = availability.get(Calendar.YEAR);
+            int month = availability.get(Calendar.MONTH);
+            int day = availability.get(Calendar.DAY_OF_MONTH);
+
+            String formatedDate = year + "/" + month + "/" + day;
+            setDate(formatedDate);
+
             validation= true;
         }
 

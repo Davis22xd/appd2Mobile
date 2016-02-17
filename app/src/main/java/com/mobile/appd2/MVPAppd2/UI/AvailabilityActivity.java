@@ -32,7 +32,7 @@ public class AvailabilityActivity extends BaseActivity
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-
+        getExtras();
         setContentView(R.layout.activity_availability);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -106,11 +106,15 @@ public class AvailabilityActivity extends BaseActivity
         finish();
     }
 
-    public void gotoFeelings() {
+    public void gotoFeelings(String date, int hour, int minute) {
 
-        Intent environmentIntent = new Intent().setClass(
-                AvailabilityActivity.this, EnvironmentActivity.class);
-        startActivity(environmentIntent);
+        Intent feelingsIntent = new Intent().setClass(
+                AvailabilityActivity.this, FeelingsActivity.class);
+        setDate(date);
+        setHour(hour);
+        setMinute(minute);
+        putExtras(feelingsIntent);
+        startActivity(feelingsIntent);
         finish();
     }
 

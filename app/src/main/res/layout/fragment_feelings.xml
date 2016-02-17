@@ -1,18 +1,24 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:background="@drawable/fondos"
     android:baselineAligned="false"
     android:orientation="vertical"
     android:visibility="visible"
     android:weightSum="1">
+    <View
+        android:id="@+id/myRectangleView"
+        android:layout_width="fill_parent"
+        android:layout_height="80dp"
+        android:layout_marginBottom="10dp"
+        android:background="#000000"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:elevation="5dp"/>
         <android.support.v7.widget.RecyclerView
             android:id="@+id/recycler_view"
             android:layout_width="match_parent"
-            android:layout_height="367dp"
+            android:layout_height="650dp"
             android:scrollbars="vertical"
             android:layout_weight="1.07" />
 </LinearLayout>
